@@ -11,9 +11,8 @@ export default defineConfig({
     },
   },
   build: {
-    rollupOptions: {
-      input: fileURLToPath(new URL("src/app/main.ts", import.meta.url)),
-    },
+    outDir: "dist",
+    emptyOutDir: true,
   },
   server: {
     port: 3000,
