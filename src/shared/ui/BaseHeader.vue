@@ -16,10 +16,10 @@ const showmenu = ref(false);
 </script>
 
 <template>
-<div>
+<div v-click-away="() => showmenu = false">
     <div class="flex items-center w-full bg-black h-[78px] lg:h-[62px] px-[22px] lg:px-[56px] relative z-10">
     <div class="mr-[15px] cursor-pointer block lg:hidden">
-        <BaseSvgIcon name="menu" />
+        <BaseSvgIcon name="menu" @click="showmenu = !showmenu"/>
     </div>
     <div>
         <RouterLink to="/">

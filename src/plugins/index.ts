@@ -1,8 +1,10 @@
 export * from "./DependencyInjectionKeys";
 import DIContainer from "./DependencyInjectionProvider";
-import vViewed from "./vViewed";
+import intersectionDirective from "./intersection-directive";
+import clickAwayDirective from "./click-away-directive";
 
 export {
     DIContainer,
-    vViewed
-}
+    intersectionDirective,
+    clickAwayDirective
+};

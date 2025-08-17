@@ -1,4 +1,4 @@
-import type { DirectiveBinding } from "vue"
+import type { DirectiveBinding } from "vue";
 
 type ObserverValue = {
     callback: () => void;
@@ -21,8 +21,8 @@ const observer = new IntersectionObserver((entries: IntersectionObserverEntry[],
         root: null,
         rootMargin: "0px",
         threshold: 0.1,
-      })
-})
+      });
+});
 
 function registerObserver(el: Element, value: ObserverValue) {
     observerElementsMap.set(el, value);
@@ -35,4 +35,4 @@ export default {
             registerObserver(el, binding.value);
         }
     },
-}
+};
