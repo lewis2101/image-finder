@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { type IImageCard, CommentItem, type IImageCardComment } from "@/widgets";
 import { BaseImageOption, BaseImage, BasePin, BaseTextArea, BaseButton, type IStorageService, getRandomUserAvatar } from "@/shared";
-import { ref, inject, onMounted, reactive, computed } from "vue";
+import { ref, inject, onMounted, shallowReactive, computed } from "vue";
 import { DependencyInjectionKeys } from "@/plugins";
 
 const COMMENT_MAX_LENGTH = 250;
@@ -17,7 +17,7 @@ const props = defineProps<{
 const commentModel = ref("");
 const showButtons = ref(false);
 
-const myComments = reactive<IImageCardComment[]>([]);
+const myComments = shallowReactive<IImageCardComment[]>([]);
 
 const getLocalComments = () => {
     return localStorageService.get<Record<string, IImageCardComment[]>>(COMMENT_LOCAL_STORAGE_KEY) || {};
@@ -40,6 +40,18 @@ const addComment = () => {
     
     myComments.push(data);
     commentModel.value = "";
+}
+
+const deleteComment = (comment: IImageCardComment) => {
+    const comments = getLocalComments();
+    const newComments = myComments.filter((item) => item.id !== comment.id ) || [];
+    const newStorageData = {
+        ...comments,
+        [props.card.id]: newComments
+    }
+
+    localStorageService.set(COMMENT_LOCAL_STORAGE_KEY, newStorageData);
+    myComments.splice(0, myComments.length, ...newComments);
 }
 
 const assignedComments = computed(() => [...props.card.comments, ...myComments]);
@@ -104,6 +116,8 @@ onMounted(() => {
             :name="comment.userName"
             :comment="comment.comment"
             :created-at="comment.createdAt"
+            :is-my-comment="comment.userName === DEFAULT_USER_NAME"
+            @delete="deleteComment(comment)"
         />
     </form>
 </template>
