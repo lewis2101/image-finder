@@ -1,21 +1,61 @@
 <script setup lang="ts">
-import { type IImageCard, CommentItem } from "@/widgets";
-import { BaseImageOption, BaseImage, BasePin, BaseTextArea, BaseButton } from "@/shared";
-import { ref } from "vue";
+import { type IImageCard, CommentItem, type IImageCardComment } from "@/widgets";
+import { BaseImageOption, BaseImage, BasePin, BaseTextArea, BaseButton, type IStorageService, getRandomUserAvatar } from "@/shared";
+import { ref, inject, onMounted, reactive, computed } from "vue";
+import { DependencyInjectionKeys } from "@/plugins";
 
 const COMMENT_MAX_LENGTH = 250;
+const DEFAULT_USER_NAME = "Мустафаев Баука";
+const COMMENT_LOCAL_STORAGE_KEY = "comments";
 
-defineProps<{
+const localStorageService = inject(DependencyInjectionKeys.localStorageService) as IStorageService;
+
+const props = defineProps<{
     card: IImageCard;
 }>();
 
 const commentModel = ref("");
 const showButtons = ref(false);
 
+const myComments = reactive<IImageCardComment[]>([]);
+
+const getLocalComments = () => {
+    return localStorageService.get<Record<string, IImageCardComment[]>>(COMMENT_LOCAL_STORAGE_KEY) || {};
+}
+
+const addComment = () => {
+    const data: IImageCardComment = {
+        id: Date.now(),
+        userName: DEFAULT_USER_NAME,
+        comment: commentModel.value,
+        createdAt: new Date(),
+        avatarUrl: getRandomUserAvatar(DEFAULT_USER_NAME)
+    };
+    const comments = getLocalComments();
+    const newStorageData = {
+        ...comments,
+        [props.card.id]: [...(comments[props.card.id] || []), data]
+    }
+    localStorageService.set(COMMENT_LOCAL_STORAGE_KEY, newStorageData);
+    
+    myComments.push(data);
+    commentModel.value = "";
+}
+
+const assignedComments = computed(() => [...props.card.comments, ...myComments]);
+
+onMounted(() => {
+    const comments = getLocalComments();
+    const cardComment = comments[props.card.id] || [];
+    if (cardComment.length) {
+        myComments.push(...cardComment);
+    }
+})
+
 </script>
 
 <template>
-    <div>
+    <form @submit.prevent="addComment">
         <div class="text-base-black text-b-20 md:text-b-24 leading-full font-600 mb-2 pr-8">
             {{ card.title }}
         </div>
@@ -54,10 +94,10 @@ const showButtons = ref(false);
         />
         <div v-if="showButtons || commentModel" class="flex items-center justify-end gap-2 mb-4">
             <BaseButton variant="secondary" @click="commentModel = ''">Отмена</BaseButton>
-            <BaseButton variant="primary">Опубликовать</BaseButton>
+            <BaseButton variant="primary" type="submit" @click="addComment">Опубликовать</BaseButton>
         </div>
         <CommentItem 
-            v-for="comment in card.comments" 
+            v-for="comment in assignedComments" 
             :key="comment.id" 
             :image-url="comment.avatarUrl"
             :alt="comment.userName"
@@ -65,7 +105,7 @@ const showButtons = ref(false);
             :comment="comment.comment"
             :created-at="comment.createdAt"
         />
-    </div>
+    </form>
 </template>
 
 <style scoped lang="scss"></style>

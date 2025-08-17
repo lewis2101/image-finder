@@ -17,6 +17,7 @@ export * from "./api/LocalStorageService";
 export * from "./utils/executeWithDelay";
 export * from "./utils/formatDate";
 export * from "./utils/pluralize";
+export { getRandomUserAvatar } from "./mock/allImages";
 
 
 export {

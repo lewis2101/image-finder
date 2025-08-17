@@ -6,7 +6,7 @@ defineProps<{
     alt: string;
     name: string;
     comment: string;
-    createdAt: Date;
+    createdAt: Date | string;
 }>();
 </script>
 
@@ -23,7 +23,7 @@ defineProps<{
                 {{ comment }}
             </div>
             <div class="text-b-12 leading-12 font-500 text-gray-500">
-                {{ formatDate(createdAt) }}
+                {{ formatDate(new Date(createdAt)) }}
             </div>
         </div>
     </div>

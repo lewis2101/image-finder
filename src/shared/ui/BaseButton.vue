@@ -14,7 +14,7 @@ const buttonStyle = computed(() => {
 </script>
 
 <template>
-    <button :class="[
+    <button v-bind="$attrs" :class="[
         'text-b-13 leading-14 font-600 rounded-6 py-3 px-[14px] min-w-[120px]',
         buttonStyle,
     ]">
