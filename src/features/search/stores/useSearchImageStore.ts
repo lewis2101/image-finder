@@ -1,7 +1,7 @@
 import { DependencyInjectionKeys } from '@/plugins';
 import { defineStore } from 'pinia'
 import { ref, inject, watch } from 'vue'
-import { ISearchService } from '../types';
+import type { ISearchService } from '../types';
 import { useRouter } from 'vue-router';
 
 export const useSearchImageStore = defineStore('searchImage', () => {

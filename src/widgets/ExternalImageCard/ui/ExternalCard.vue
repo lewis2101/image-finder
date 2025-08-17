@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { IImageCard, CommentItem } from "@/widgets";
+import { type IImageCard, CommentItem } from "@/widgets";
 import { BaseImageOption, BaseImage, BasePin, BaseTextArea, BaseButton } from "@/shared";
 import { ref } from "vue";
 
@@ -53,7 +53,7 @@ const showButtons = ref(false);
             @blur="showButtons = false"
         />
         <div v-if="showButtons || commentModel" class="flex items-center justify-end gap-2 mb-4">
-            <BaseButton variant="secondary">Отмена</BaseButton>
+            <BaseButton variant="secondary" @click="commentModel = ''">Отмена</BaseButton>
             <BaseButton variant="primary">Опубликовать</BaseButton>
         </div>
         <CommentItem 

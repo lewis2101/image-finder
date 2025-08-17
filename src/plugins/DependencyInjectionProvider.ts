@@ -1,6 +1,6 @@
-import { App } from "vue";
-import { SearchService, ImageService,type ISearchService, type IImageService } from "@/features";
-import { HttpService, QueryObject, UrlQueryService, type IHttpService, type IUrlQueryService } from "@/shared";
+import type { App } from "vue";
+import { SearchService, ImageService, type ISearchService, type IImageService } from "@/features";
+import { HttpService, type QueryObject, UrlQueryService, type IHttpService, type IUrlQueryService } from "@/shared";
 import { DependencyInjectionKeys } from "./DependencyInjectionKeys";
 import router from "@/app/router";
 

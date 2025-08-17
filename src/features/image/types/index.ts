@@ -1,4 +1,4 @@
-import { IImageCard } from "@/widgets";
+import type { IImageCard } from "@/widgets";
 
 export interface IImageService {
     filterImagesByPins(images: IImageCard[], activePins: string[]): IImageCard[];

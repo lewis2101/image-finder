@@ -1,4 +1,4 @@
-import { IImageCard } from "@/widgets";
+import type { IImageCard } from "@/widgets";
 import natureMan from "@/app/assets/images/nature_man.png"
 import natureAnimal from "@/app/assets/images/nature_animal.png"
 import nature from "@/app/assets/images/nature.png"

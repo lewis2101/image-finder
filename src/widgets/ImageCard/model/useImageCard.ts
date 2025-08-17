@@ -1,5 +1,5 @@
 import { computed } from "vue";
-import { IImageCard } from "../types"
+import type { IImageCard } from "../types"
 
 export type ImageCardProps = {
     card: IImageCard;

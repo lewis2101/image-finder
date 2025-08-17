@@ -8,7 +8,7 @@ type ObserverValue = {
 
 const observerElementsMap: Map<Element, ObserverValue> = new Map();
 
-const observer = new IntersectionObserver((entries, obs) => {
+const observer = new IntersectionObserver((entries: IntersectionObserverEntry[], obs: IntersectionObserver) => {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const targetValue = observerElementsMap.get(entry.target);
