@@ -30,8 +30,9 @@ const onLoadedImage = () => {
 <template>
     <div class="relative w-full image-size">
             <img v-view="{
-                callback: intersectImage,
-                id: src + alt,
+                    callback: intersectImage,
+                    id: src + alt,
+                    once: true,
                 }" 
                 :src="imageSrc" 
                 :alt="alt" 
