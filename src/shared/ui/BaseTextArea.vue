@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, defineModel, defineEmits } from "vue";
-import cross from "@/app/assets/cross.svg?raw";
+import { BaseSvgIcon} from "@/shared";
 
 defineProps<{
     maxLength?: number;
@@ -51,13 +51,12 @@ const onBlur = () => {
         <div v-if="showCounter && maxLength" class="text-b-12 leading-12 font-500 text-gray-600">
             {{ model.length }} / {{ maxLength }}
         </div>
-        <span 
+        <BaseSvgIcon 
             v-if="model.length" 
-            v-html="cross" 
+            name="cross" 
             class="absolute py-[10px] px-[10px] right-0 top-0 cursor-pointer"
             @click.stop="model = ''"
-        >
-        </span>
+        />
     </div>
 </template>
 

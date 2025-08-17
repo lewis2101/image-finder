@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import cross from "@/app/assets/cross.svg?raw";
+import { BaseSvgIcon } from "@/shared";
 import { watch } from "vue";
 
 const showModel = defineModel<boolean>({
@@ -22,7 +22,7 @@ watch(showModel, (newValue) => {
                 <div class="w-full min-w-[150px] max-w-[500px] h-fit modal-content 
                     bg-base-white py-4 px-4 rounded-12 relative" @click.stop>
                     <div class="absolute top-0 right-0 py-4 px-4 z-50 cursor-pointer" @click="showModel = false">
-                        <span v-html="cross"></span>
+                        <BaseSvgIcon name="cross" />
                     </div>
                     <slot />
                 </div>

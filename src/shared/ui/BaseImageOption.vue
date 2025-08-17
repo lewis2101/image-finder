@@ -1,6 +1,6 @@
 <script setup lang=ts>
+import { BaseSvgIcon } from "@/shared";
 import { formatDateLocale, pluralize } from "@/shared"
-import time from "@/app/assets/time.svg?raw";
 
 defineProps<{
     date: Date;
@@ -15,7 +15,7 @@ const commentaryTextVariants = ["комментарий", "комментари�
     <div class="flex items-center gap-1 text-b-12 md:text-b-14 leading-12 md:leading-14 font-500 text-gray-600">
         {{ formatDateLocale(date) }} 
         <div>•</div> 
-        <span v-html="time"></span> 
+        <BaseSvgIcon name="time" />
         {{ reviewTime }}
         мин
         <div>•</div>

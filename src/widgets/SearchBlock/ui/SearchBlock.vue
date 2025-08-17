@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import arrowDown from "@/app/assets/arrow-down.svg?raw";
-import { BaseSearchInput } from "@/shared";
+import { BaseSearchInput, BaseSvgIcon } from "@/shared";
 
 defineProps<{
     activePins: string[];
@@ -33,12 +32,12 @@ const model = defineModel<string>({
                     >
                         Очистить
                 </div>
-                <div class="flex items-center">
-                    <div class="mr-[4px] text-gray-500 text-b-14 leading-14 font-500 cursor-pointer select-none" 
+                <div class="flex items-center cursor-pointer select-none">
+                    <div class="mr-[4px] text-gray-500 text-b-14 leading-14 font-500" 
                         @click="$emit('toggleExpand')">
                         Фильтр
                     </div>
-                    <span v-html="arrowDown" :class="isExpanded ? ' rotate-180' : ''"></span>
+                    <BaseSvgIcon name="arrow-down" :class="isExpanded ? ' rotate-180' : ''" />
                 </div>
             </div>
         </div>

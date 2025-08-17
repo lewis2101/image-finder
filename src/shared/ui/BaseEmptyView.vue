@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import searchList from "@/app/assets/search-list.svg?raw";
+import { BaseSvgIcon} from "@/shared";
 </script>
 
 <template>
     <div class="text-center w-full max-w-[280px]">
         <div class="flex items-center justify-center mb-2">
-            <span v-html="searchList"></span>
+            <BaseSvgIcon name="search-list" width="48" height="48" />
         </div>
         <div class="mb-2 text-gray-600 text-b-14 leading-14 font-500">
             Поиск не дал результатов

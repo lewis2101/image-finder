@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import menu from "@/app/assets/menu.svg?raw";
+import { BaseSvgIcon} from "@/shared";
 import { ref } from "vue";
 
 type INavList = {
@@ -19,7 +19,7 @@ const showmenu = ref(false);
 <div>
     <div class="flex items-center w-full bg-black h-[78px] lg:h-[62px] px-[22px] lg:px-[56px] relative z-10">
     <div class="mr-[15px] cursor-pointer block lg:hidden">
-        <span v-html="menu" @click="showmenu = !showmenu"></span>
+        <BaseSvgIcon name="menu" />
     </div>
     <div>
         <RouterLink to="/">

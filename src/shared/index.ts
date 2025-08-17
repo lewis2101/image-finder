@@ -7,6 +7,7 @@ import BaseImageOption from "./ui/BaseImageOption.vue";
 import BaseImage from "./ui/BaseImage.vue";
 import BaseTextArea from "./ui/BaseTextArea.vue";
 import BaseButton from "./ui/BaseButton.vue";
+import BaseSvgIcon from "./ui/BaseSvgIcon.vue";
 
 export * from "./types";
 export * from "./utils/debounce";
@@ -27,4 +28,5 @@ export {
     BaseImage,
     BaseTextArea,
     BaseButton,
+    BaseSvgIcon,
 }

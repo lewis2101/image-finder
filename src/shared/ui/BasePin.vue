@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import plus from "@/app/assets/plus.svg?raw"
-import check from "@/app/assets/check.svg?raw"
+import { BaseSvgIcon} from "@/shared";
 import type { IBasePin } from "../types";
 import { computed } from "vue";
 
@@ -24,7 +23,9 @@ const sizeStyles = computed(() => {
         sizeStyles
     ]">
         <div>{{ title }}</div>
-        <div v-if="icon"><span v-html="isChecked ? check : plus"></span></div>
+        <div v-if="icon">
+            <BaseSvgIcon :name="isChecked ? 'check' : 'plus'" />
+        </div>
     </div>
 </template>
 
