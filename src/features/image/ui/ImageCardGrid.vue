@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ImageCard, ModalCard } from "@/widgets";
-import { BaseSpinner, BaseEmptyView, BaseExternalCard } from "@/shared";
+import { ImageCard, ModalCard, ExternalCard } from "@/widgets";
+import { BaseSpinner, BaseEmptyView } from "@/shared";
 import { useImageCardGrid } from "../model/useImageCardGrid";
 
 const { 
@@ -25,7 +25,7 @@ const {
         />
         <ModalCard v-model="isShowExternalCardModal">
             <template v-if="currentExternalCard">
-                <BaseExternalCard :card="currentExternalCard" />
+                <ExternalCard :card="currentExternalCard" />
             </template>
         </ModalCard>
     </div>

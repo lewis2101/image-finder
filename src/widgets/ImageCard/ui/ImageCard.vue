@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import natureMan from "@/app/assets/images/nature_man.png"
-import time from "@/app/assets/time.svg?raw";
 import { ref } from "vue";
-import BasePin from "../../../shared/ui/BasePin.vue";
-import BaseImage from "../../../shared/ui/BaseImage.vue";
-import { executeWithDelay, formatDateLocale } from "@/shared";
+import { BasePin, BaseImage, BaseImageOption, executeWithDelay, formatDateLocale } from "@/shared";
 import { useImageCard, type ImageCardProps } from "../model/useImageCard";
 
 const props = defineProps<ImageCardProps>();
@@ -16,20 +13,15 @@ const { imageCard } = useImageCard(props);
 <template>
     <div class="w-full max-w-[400px] flex flex-col gap-[10px] mb-10 cursor-pointer">
         <BaseImage :src="imageCard.url" :alt="imageCard.alt" height="250px" />
-        <div class="flex items-center gap-1 text-b-14 leading-14 font-500 text-gray-600">
-            {{ formatDateLocale(imageCard.createdAt) }} 
-            <div>•</div> 
-            <span v-html="time"></span> 
-            {{ imageCard.reviewTime }}
-            мин
-            <div>•</div>
-            {{ imageCard.amountComment }} 
-            комментариев
-        </div>
+        <BaseImageOption 
+            :date="imageCard.createdAt" 
+            :review-time="imageCard.reviewTime" 
+            :amount-comment="imageCard.comments.length"
+        />
         <div class="text-b-22 leading-full font-600 text-base-black">
             {{ imageCard.title }}
         </div>
-        <div class="text-b-16 leading-24 font-500 text-base-black">
+        <div class="text-b-16 leading-24 font-500 text-base-black limit-3-lines">
             {{ imageCard.description }}
         </div>
         <div class="flex flex-wrap item-center gap-2">
@@ -44,4 +36,10 @@ const { imageCard } = useImageCard(props);
 </template> 
       
 <style scoped lang="scss">
+.limit-3-lines {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 </style>

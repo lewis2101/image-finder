@@ -1,0 +1,25 @@
+<script setup lang="ts">
+import { computed } from "vue";
+
+const props = defineProps<{
+    variant: "primary" | "secondary";
+}>();
+
+const buttonStyle = computed(() => {
+    return props.variant === "primary"
+        ? "text-base-white bg-primary"
+        : "text-primary bg-primary-light";
+});
+
+</script>
+
+<template>
+    <button :class="[
+        'text-b-13 leading-14 font-600 rounded-6 py-3 px-[14px] min-w-[120px]',
+        buttonStyle,
+    ]">
+        <slot />
+    </button>
+</template>
+
+<style scoped lang="scss"></style>
