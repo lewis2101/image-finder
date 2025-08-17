@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import menu from "@/app/assets/menu.svg?raw";
+import { ref } from "vue";
 
 type INavList = {
     title: string;
@@ -9,12 +10,16 @@ type INavList = {
 defineProps<{
     navList: INavList[];
 }>()
+
+const showmenu = ref(false);
+
 </script>
 
 <template>
-<div class="flex items-center w-full bg-black h-[78px] lg:h-[62px] px-[22px] lg:px-[56px]">
+<div>
+    <div class="flex items-center w-full bg-black h-[78px] lg:h-[62px] px-[22px] lg:px-[56px] relative z-10">
     <div class="mr-[15px] cursor-pointer block lg:hidden">
-        <span v-html="menu"></span>
+        <span v-html="menu" @click="showmenu = !showmenu"></span>
     </div>
     <div>
         <RouterLink to="/">
@@ -29,6 +34,20 @@ defineProps<{
         exact-active-class="bg-white bg-opacity-10 text-primary"
         class="text-gray-100 text-b-16 leading-16 font-600 px-[14px] py-[8px] cursor-pointer rounded-6 hidden lg:block">
             {{ list.title }}
+        </RouterLink>
+    </div>
+    </div>
+    <div :class="[
+        'fixed left-0 w-full flex flex-col gap-3 bg-base-black py-6 px-4 lg:hidden transition-all duration-300 ease-in-out z-[5]',
+        showmenu ? 'top-[70px]' : 'top-[-100px]'
+        ]">
+            <RouterLink 
+            v-for="list in navList" 
+            :key="list.to" 
+            :to="list.to"
+            exact-active-class="bg-white bg-opacity-10 text-primary"
+            class="text-gray-100 text-b-16 leading-16 font-600 px-[14px] py-[8px] cursor-pointer rounded-6">
+                {{ list.title }}
         </RouterLink>
     </div>
 </div>
