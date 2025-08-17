@@ -13,6 +13,7 @@ export * from "./types";
 export * from "./utils/debounce";
 export * from "./api/HttpService";
 export * from "./api/UrlQueryService";
+export * from "./api/LocalStorageService";
 export * from "./utils/executeWithDelay";
 export * from "./utils/formatDate";
 export * from "./utils/pluralize";

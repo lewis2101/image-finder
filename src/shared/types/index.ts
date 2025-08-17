@@ -7,7 +7,11 @@ export interface IHttpService {
 }
 
 export interface IStorageService {
-    
+    set<T>(key: string, value: T): void;
+    get<T>(key: string): T | null;
+    remove(key: string): void;
+    clear(): void;
+    has(key: string): boolean;
 }
 
 export interface IUrlQueryService {
