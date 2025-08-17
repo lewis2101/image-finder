@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { executeWithDelay }  from "../utils/executeWithDelay";
 import logoImage from "@/app/assets/logo.png";
 
 const props = withDefaults(defineProps<{

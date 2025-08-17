@@ -6,6 +6,10 @@ export interface IHttpService {
     get<T>(path: HttpEndpoints): Promise<T>;
 }
 
+export interface IStorageService {
+    
+}
+
 export interface IUrlQueryService {
     getQuery: () => QueryObject;
     getValueByQuery<T>(key: string): T | null;

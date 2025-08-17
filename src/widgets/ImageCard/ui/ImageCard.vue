@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import natureMan from "@/app/assets/images/nature_man.png"
-import { ref } from "vue";
-import { BasePin, BaseImage, BaseImageOption, executeWithDelay, formatDateLocale } from "@/shared";
+import { BasePin, BaseImage, BaseImageOption } from "@/shared";
 import { useImageCard, type ImageCardProps } from "../model/useImageCard";
 
 const props = defineProps<ImageCardProps>();

@@ -1,9 +1,9 @@
 import { useSearchImageStore } from "@/features/search/stores/useSearchImageStore";
 import { DependencyInjectionKeys } from "@/plugins";
-import { IImageCard } from "@/widgets"
+import type { IImageCard } from "@/widgets"
 import { storeToRefs } from "pinia";
 import { reactive, inject, onMounted, ref, computed } from "vue";
-import { IImageService } from "../types";
+import type { IImageService } from "../types";
 
 export function useImageCardGrid() {
     const imageService = inject(DependencyInjectionKeys.imageService) as IImageService;

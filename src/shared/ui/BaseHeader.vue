@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { computed } from "vue";
-import { useRouter } from "vue-router";
 import menu from "@/app/assets/menu.svg?raw";
 
 type INavList = {
@@ -11,8 +9,6 @@ type INavList = {
 defineProps<{
     navList: INavList[];
 }>()
-
-const router = useRouter();
 </script>
 
 <template>

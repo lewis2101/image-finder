@@ -9,7 +9,7 @@ defineProps<{
 
 defineEmits<{
     (e: "clearPins"): void;
-    (e: "toggleExpand", value: boolean): void;
+    (e: "toggleExpand"): void;
 }>()
 
 const model = defineModel<string>({

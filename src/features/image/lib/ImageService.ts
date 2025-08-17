@@ -1,6 +1,6 @@
-import { IImageCard } from "@/widgets";
-import { IImageService } from "../types";
-import { IHttpService } from "@/shared";
+import type { IImageCard } from "@/widgets";
+import type { IImageService } from "../types";
+import type { IHttpService } from "@/shared";
 
 export class ImageService implements IImageService {
     constructor(private httpClient: IHttpService) {}
