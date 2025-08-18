@@ -1,5 +1,50 @@
-# Vue 3 + TypeScript + Vite
+# Тестовое задание на Vue 3 + TS
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Приложение развернуто по ссылке - https://image-finder-btiq.vercel.app/
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## Установка и запуск 
+```bash
+npm install
+npm run dev
+```
+После запуска проект будет доступен по адресу: http://localhost:3000
+
+## Используемый стек
+- Vue 3 
+- TypeScript 
+- Vue Router
+- Pinia
+- TailwindCSS
+
+---
+
+## Архитектура
+### Архитектура построена с использованием Dependency Injection (provide/inject):
+- Логика разделена на интерфейсы и классы, что упрощает замену реализации 
+- В DI-контейнере можно легко подменить один класс на другой (принцип полиморфизма) 
+- Пример:
+- класс HttpClient работает с мок-данными
+- при необходимости можно подключить реальную реализацию API и зарегистрировать её в контейнере вместо мока (используя единый интерфейс)
+
+Это делает проект гибким и расширяемым.
+
+---
+
+## Структура проекта
+Использована упрощённая версия Feature-Sliced Design (FSD):
+- app/ - инициализация приложения (роутер, store, страницы)  
+- shared/ - утилиты, переиспользуемые компоненты и интерфейсы 
+- plugins/ - Di-контейнер плагин и директивы
+- features/ - отдельные фичи (Search, Image и др.)
+- widgets/ - комплексные UI-блоки, собранные из сущностей и фич  
+
+---
+
+## Дополнения от себя
+- Сделал **директиву для `IntersectionObserver`** - используется для `lazyload` изображений и любых кейсов отслеживания видимости.  
+- Сделал **директиву `v-clickaway`** для удобного использования в компонентах.  
+- Реализовал **lazyload изображений** через директиву `IntersectionObserver`.  
+- Добавил **сохранение состояния** в `query-параметры`.  
+- Добавил **сохранение комментариев** в `localStorage`.  
+
+---
