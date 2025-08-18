@@ -1,15 +1,12 @@
-import type { IHttpService, HttpEndpoints } from "../types"
+import type { IHttpService, HttpEndpoints } from "../types";
 import { allPins } from "../mock/allPins";
 import { allImages } from "../mock/allImages";
 import { executeWithDelay } from "../utils/executeWithDelay";
 
 const responseMockMapper: Record<HttpEndpoints, any> = {
     "/pins": allPins,
-    "/commentaries": 1,
     "/all-images": allImages,
-    "/images": 1,
-    "comment": 1,
-}
+};
 
 export class HttpService implements IHttpService  {
     constructor() {}

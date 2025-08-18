@@ -1,4 +1,4 @@
-export type HttpEndpoints = "/pins" | "/all-images" | "/images" | "/commentaries" | "comment";
+export type HttpEndpoints = "/pins" | "/all-images";
 
 export type QueryObject<T = any> = Record<string, T | undefined>;
 
