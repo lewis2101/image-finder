@@ -106,7 +106,14 @@ onMounted(() => {
         />
         <div v-if="showButtons || commentModel" class="flex items-center justify-end gap-2 mb-4">
             <BaseButton variant="secondary" @click="commentModel = ''">Отмена</BaseButton>
-            <BaseButton variant="primary" type="submit" @click="addComment">Опубликовать</BaseButton>
+            <BaseButton 
+                variant="primary" 
+                type="submit" 
+                :disabled="!commentModel.length"
+                @click="addComment"
+            >
+                Опубликовать
+            </BaseButton>
         </div>
         <CommentItem 
             v-for="comment in assignedComments" 

@@ -3,9 +3,14 @@ import { computed } from "vue";
 
 const props = defineProps<{
     variant: "primary" | "secondary";
+    disabled?: boolean;
 }>();
 
 const buttonStyle = computed(() => {
+    if (props.disabled) {
+        return "bg-gray-100 text-gray-400";
+    }
+
     return props.variant === "primary"
         ? "text-base-white bg-primary"
         : "text-primary bg-primary-light";

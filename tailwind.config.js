@@ -48,6 +48,7 @@ export default {
         "error": "#F1416C",
         "gray-100": "#F9F9F9",
         "gray-200": "#F1F1F2",
+        "gray-400": "#D8D8E5",
         "gray-500": "#A1A5B7",
         "gray-600": "#7E8299",
         "gray-800": "#3F4254",
