@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { BaseSvgIcon} from "@/shared";
-import { ref } from "vue";
+import { ref, watch } from "vue";
+import { useRouter } from "vue-router";
 
 type INavList = {
     title: string;
@@ -11,15 +12,21 @@ defineProps<{
     navList: INavList[];
 }>()
 
+const router = useRouter();
+
 const showmenu = ref(false);
+
+watch(router.currentRoute, () => {
+    showmenu.value = false;
+})
 
 </script>
 
 <template>
 <div v-click-away="() => showmenu = false">
-    <div class="flex items-center w-full bg-black h-[78px] lg:h-[62px] px-[22px] lg:px-[56px] relative z-10">
-    <div class="mr-[15px] cursor-pointer block lg:hidden">
-        <BaseSvgIcon name="menu" @click="showmenu = !showmenu"/>
+    <div class="flex items-center w-full bg-black h-[78px] lg:h-[62px] px-2 lg:px-[56px] relative z-10">
+    <div class="py-[15px] px-[15px] cursor-pointer block lg:hidden" @click="showmenu = !showmenu">
+        <BaseSvgIcon name="menu"/>
     </div>
     <div>
         <slot name="logo"  />
