@@ -22,9 +22,7 @@ const showmenu = ref(false);
         <BaseSvgIcon name="menu" @click="showmenu = !showmenu"/>
     </div>
     <div>
-        <RouterLink to="/">
-            <slot name="logo"  />
-        </RouterLink>
+        <slot name="logo"  />
     </div>
     <div class="ml-[80px] flex items-center gap-[20px]">
         <RouterLink 
